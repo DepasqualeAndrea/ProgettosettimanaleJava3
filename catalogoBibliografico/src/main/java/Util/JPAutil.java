@@ -8,7 +8,7 @@ public class JPAutil {
 
 	static {
 		try {
-			entityManagerFactory = Persistence.createEntityManagerFactory("gestioneEventi");
+			entityManagerFactory = Persistence.createEntityManagerFactory("catalogoBibliografico");
 		} catch (Throwable ex) {
 			System.err.println("Initial EntityManagerFactory creation failed." + ex);
 			throw new ExceptionInInitializerError(ex);

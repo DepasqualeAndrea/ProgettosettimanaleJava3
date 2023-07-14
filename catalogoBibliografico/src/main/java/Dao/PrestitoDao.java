@@ -16,17 +16,17 @@ public class PrestitoDao {
 	}
 //metodo save
 
-	public void saveEvent(Prestito ev) {
+	public void savePrestito(Prestito ev) {
 		EntityTransaction e = em.getTransaction();
 		e.begin();
 		em.persist(ev);
 		e.commit();
-		System.out.println("Autore salvato correttamente");
+		System.out.println("Prestito salvato correttamente");
 	}
 
 //metodo find	
 
-	public Prestito findEventById(UUID id) {
+	public Prestito findPrestitoById(UUID id) {
 
 		Prestito trova = em.find(Prestito.class, id);
 		return trova;
@@ -34,16 +34,16 @@ public class PrestitoDao {
 
 //metodo delete
 
-	public void findByIdAndDelete(UUID id) {
+	public void findPrestitoByIdAndDelete(UUID id) {
 		Prestito trova = em.find(Prestito.class, id);
 		if (trova != null) {
 			EntityTransaction t = em.getTransaction();
 			t.begin();
 			em.remove(trova);
 			t.commit();
-			System.out.println("Autore eliminato con successo");
+			System.out.println("Prestito eliminato con successo");
 		} else {
-			System.out.println("Autore non trovato");
+			System.out.println("Prestito non trovato");
 		}
 	}
 }

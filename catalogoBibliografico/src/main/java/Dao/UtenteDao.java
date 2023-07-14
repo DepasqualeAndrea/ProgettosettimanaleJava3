@@ -15,17 +15,17 @@ public class UtenteDao {
 	}
 //metodo save
 
-	public void saveEvent(Utente ev) {
+	public void saveUtente(Utente ev) {
 		EntityTransaction e = em.getTransaction();
 		e.begin();
 		em.persist(ev);
 		e.commit();
-		System.out.println("Autore salvato correttamente");
+		System.out.println("Utente salvato correttamente");
 	}
 
 //metodo find	
 
-	public Utente findEventById(UUID id) {
+	public Utente findUtenteById(UUID id) {
 
 		Utente trova = em.find(Utente.class, id);
 		return trova;
@@ -33,16 +33,16 @@ public class UtenteDao {
 
 //metodo delete
 
-	public void findByIdAndDelete(UUID id) {
+	public void findUtenteByIdAndDelete(UUID id) {
 		Utente trova = em.find(Utente.class, id);
 		if (trova != null) {
 			EntityTransaction t = em.getTransaction();
 			t.begin();
 			em.remove(trova);
 			t.commit();
-			System.out.println("Autore eliminato con successo");
+			System.out.println("Utente eliminato con successo");
 		} else {
-			System.out.println("Autore non trovato");
+			System.out.println("Utente non trovato");
 		}
 	}
 }

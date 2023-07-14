@@ -15,7 +15,7 @@ public class PubblicazioneDao {
 	}
 //metodo save
 
-	public void saveEvent(Pubblicazione ev) {
+	public void savePubblicazione(Pubblicazione ev) {
 		EntityTransaction e = em.getTransaction();
 		e.begin();
 		em.persist(ev);
@@ -25,7 +25,7 @@ public class PubblicazioneDao {
 
 //metodo find	
 
-	public Pubblicazione findEventById(UUID id) {
+	public Pubblicazione findPubblicazioneById(UUID id) {
 
 		Pubblicazione trova = em.find(Pubblicazione.class, id);
 		return trova;
@@ -33,7 +33,7 @@ public class PubblicazioneDao {
 
 //metodo delete
 
-	public void findByIdAndDelete(UUID id) {
+	public void findPubblicazioneByIdAndDelete(UUID id) {
 		Pubblicazione trova = em.find(Pubblicazione.class, id);
 		if (trova != null) {
 			EntityTransaction t = em.getTransaction();

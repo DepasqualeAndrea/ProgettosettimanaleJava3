@@ -28,20 +28,20 @@ public class Prestito {
 	private LocalDate dataRestituzioneEffettiva;
 
 	@ManyToOne
-	@JoinColumn(name = "utente_id", referencedColumnName = "id")
+	@JoinColumn(name = "utente_id", referencedColumnName = "numero_tessera")
 	private Utente utente;
 
 	@ManyToOne
-	@JoinColumn(name = "publicazione_id", referencedColumnName = "id")
+	@JoinColumn(name = "publicazione_id", referencedColumnName = "isbn")
 	private Pubblicazione pubblicazione;
 
-	public Prestito(UUID id, LocalDate data_inizio_prestito, LocalDate dataRestituzionePrevista,
-			LocalDate dataRestituzioneEffettiva) {
-		super();
-		this.id = id;
+	public Prestito(LocalDate data_inizio_prestito, LocalDate dataRestituzionePrevista,
+			LocalDate dataRestituzioneEffettiva, Utente utente, Pubblicazione pubblicazione) {
 		this.data_inizio_prestito = data_inizio_prestito;
 		this.dataRestituzionePrevista = dataRestituzionePrevista;
 		this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
+		this.utente = utente;
+		this.pubblicazione = pubblicazione;
 	}
 
 	@Override
