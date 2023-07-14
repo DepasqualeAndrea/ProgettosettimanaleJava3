@@ -1,10 +1,13 @@
 package Dao;
 
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
+import Entities.Libro;
 import Entities.Pubblicazione;
 
 public class PubblicazioneDao {
@@ -45,4 +48,35 @@ public class PubblicazioneDao {
 			System.out.println("Pubblicazione non trovato");
 		}
 	}
+
+	public Pubblicazione trovaPerIsbn(UUID isbn) {
+		TypedQuery<Pubblicazione> query = em.createQuery("SELECT e FROM Elemento e WHERE e.isbn = :isbn",
+				Pubblicazione.class);
+		query.setParameter("isbn", isbn);
+		return query.getSingleResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	public Set<Pubblicazione> trovaPerAnnoPubblicazione(int anno) {
+		TypedQuery<Pubblicazione> query = em.createQuery("SELECT e FROM Elemento e WHERE e.annoPubblicazione = :anno",
+				Pubblicazione.class);
+		query.setParameter("anno", anno);
+		return (Set<Pubblicazione>) query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public Set<Libro> trovaPerAutore(String autore) {
+		TypedQuery<Libro> query = em.createQuery("SELECT l FROM Libro l WHERE l.autore = :autore", Libro.class);
+		query.setParameter("autore", autore);
+		return (Set<Libro>) query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public Set<Pubblicazione> trovaPerTitolo(String titolo) {
+		TypedQuery<Pubblicazione> query = em.createQuery("SELECT e FROM Elemento e WHERE e.titolo LIKE :titolo",
+				Pubblicazione.class);
+		query.setParameter("titolo", "%" + titolo + "%");
+		return (Set<Pubblicazione>) query.getResultList();
+	}
+
 }

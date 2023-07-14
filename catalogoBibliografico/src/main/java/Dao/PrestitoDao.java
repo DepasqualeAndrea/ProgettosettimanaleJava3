@@ -1,12 +1,15 @@
 
 package Dao;
 
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
 import Entities.Prestito;
+import Entities.Utente;
 
 public class PrestitoDao {
 	private final EntityManager em;
@@ -46,4 +49,19 @@ public class PrestitoDao {
 			System.out.println("Prestito non trovato");
 		}
 	}
+
+	public Set<Prestito> trovaPerUtente(Utente utente) {
+		TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p WHERE p.utente = :utente",
+				Prestito.class);
+		query.setParameter("utente", utente);
+		return (Set<Prestito>) query.getResultList();
+	}
+
+	public Set<Prestito> trovaScadutiNonRestituiti() {
+		TypedQuery<Prestito> query = em.createQuery(
+				"SELECT p FROM Prestito p WHERE p.dataRestituzioneEffettiva IS NULL AND p.dataRestituzionePrevista < CURRENT_DATE",
+				Prestito.class);
+		return (Set<Prestito>) query.getResultList();
+	}
+
 }

@@ -60,18 +60,20 @@ public class Reception {
 				LocalDate.now(), utente2, rivista2);
 		PrestitoDao prestito1 = new PrestitoDao(em);
 
-		p.savePubblicazione(publica);
-		p1.savePubblicazione(publica1);
-		p2.savePubblicazione(publica2);
-		p3.savePubblicazione(publica3);
-		r.savePubblicazione(rivista);
-		r2.savePubblicazione(rivista2);
-		r3.savePubblicazione(rivista3);
+//		p.savePubblicazione(publica);
+//		p1.savePubblicazione(publica1);
+//		p2.savePubblicazione(publica2);
+//		p3.savePubblicazione(publica3);
+//		r.savePubblicazione(rivista);
+//		r2.savePubblicazione(rivista2);
+//		r3.savePubblicazione(rivista3);
+//
+//		u.saveUtente(utente);
+//		u2.saveUtente(utente2);
+//		prestito.savePrestito(pubblicazione);
+//		prestito1.savePrestito(pubblicazione1);
 
-		u.saveUtente(utente);
-		u2.saveUtente(utente2);
-		prestito.savePrestito(pubblicazione);
-		prestito1.savePrestito(pubblicazione1);
+		// Set<Pubblicazione> ricercaLibro = PubblicazioneDao.trovaPerIsbn();
 
 		em.close();
 		emf.close();
